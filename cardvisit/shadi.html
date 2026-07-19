@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="logo.png">
+<title>SAEM Security</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          navy: { DEFAULT: '#0A0A14', panel: '#131322', line: '#242238' },
+          paper: { DEFAULT: '#F5F3FB', panel: '#FFFFFF', line: '#E3DFF3' },
+          brand: { 500: '#6C5CE7', 400: '#8B7CF5', 300: '#B7ACF9' },
+          accent: { 400: '#C77DFF', 300: '#E0B8FF' }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          displayAr: ['"Noto Kufi Arabic"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          bodyAr: ['"Noto Kufi Arabic"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace']
+        },
+        boxShadow: {
+          glow: '0 0 40px -8px rgba(108,92,231,0.55)'
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    transition: background-color .35s ease, color .35s ease;
+  }
+
+  .card-radar {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    pointer-events: none;
+    top: -40px;
+    height: 220px;
+  }
+
+  .card-radar-ring {
+    position: absolute;
+    border-radius: 9999px;
+    border: 1px solid rgba(108, 92, 231, 0.22);
+  }
+
+  .card-radar-ring.r1 {
+    width: 210px;
+    height: 210px;
+  }
+
+  .card-radar-ring.r2 {
+    width: 270px;
+    height: 270px;
+    border-color: rgba(199, 125, 255, 0.16);
+  }
+
+  .card-radar-ring.r3 {
+    width: 330px;
+    height: 330px;
+    border-color: rgba(108, 92, 231, 0.10);
+    animation: card-pulse 3.2s ease-in-out infinite;
+  }
+
+  @keyframes card-pulse {
+    0%, 100% { opacity: .5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+
+  .avatar-ring {
+    background: linear-gradient(135deg, #6C5CE7, #C77DFF);
+    padding: 3px;
+    border-radius: 9999px;
+  }
+
+  .avatar-inner {
+    border-radius: 9999px;
+    overflow: hidden;
+    background: #0D1526;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #34D399;
+    box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
+  }
+
+  .terminal-caret::after {
+    content: '▍';
+    color: #C77DFF;
+    animation: caret 1s step-start infinite;
+  }
+
+  @keyframes caret {
+    50% { opacity: 0; }
+  }
+
+  .terminal-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .terminal-link:hover {
+    color: #C77DFF;
+    text-decoration: underline;
+  }
+
+  ::selection {
+    background: #6C5CE7;
+    color: white;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #C77DFF;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-radar-ring.r3,
+    .terminal-caret::after {
+      animation: none !important;
+    }
+  }
+</style>
+</head>
+
+<body class="bg-paper dark:bg-navy text-[#0B1220] dark:text-[#E7EDFB] font-body transition-colors min-h-screen">
+
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-paper/80 dark:bg-navy/70 border-b border-paper-line dark:border-navy-line">
+  <div class="max-w-md mx-auto px-5 h-16 flex items-center justify-between gap-4">
+    <a href="https://saemsecurity.com" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-8 h-8 flex items-center justify-center shrink-0">
+        <img src="logo.png" data-i18n-alt alt="SAEM Security Logo" class="w-full h-full object-contain">
+      </div>
+      <span class="font-display font-semibold tracking-tight text-sm">SAEM <span class="text-brand-500 dark:text-accent-400">Security</span></span>
+    </a>
+
+    <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center rounded-full border border-paper-line dark:border-navy-line p-0.5 text-xs font-mono">
+        <button data-lang="ar" class="lang-btn px-2.5 py-1 rounded-full transition-colors">AR</button>
+        <button data-lang="tr" class="lang-btn px-2.5 py-1 rounded-full transition-colors">TR</button>
+        <button data-lang="en" class="lang-btn px-2.5 py-1 rounded-full transition-colors">EN</button>
+      </div>
+      <button id="themeToggle" data-i18n-aria aria-label="Toggle dark / light mode"
+        class="w-9 h-9 rounded-full border border-paper-line dark:border-navy-line flex items-center justify-center hover:border-brand-500 dark:hover:border-accent-400 transition-colors">
+        <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-md mx-auto px-5 pt-28 pb-14">
+  <div class="relative rounded-3xl border border-paper-line dark:border-navy-line bg-paper-panel/60 dark:bg-navy-panel/60 backdrop-blur-sm px-6 pt-16 pb-8 overflow-hidden">
+
+    <div class="card-radar">
+      <div class="card-radar-ring r1"></div>
+      <div class="card-radar-ring r2"></div>
+      <div class="card-radar-ring r3"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center text-center">
+      <div class="avatar-ring w-28 h-28">
+        <div class="avatar-inner w-full h-full">
+          <img id="avatarImg" src="" alt="" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <h1 id="nameLabel" class="font-display font-semibold text-2xl mt-5 tracking-tight"></h1>
+      <span id="roleLabel" class="mt-1.5 inline-block text-xs font-mono tracking-widest uppercase text-brand-500 dark:text-accent-400 border border-brand-500/30 dark:border-accent-400/30 rounded-full px-3 py-1"></span>
+
+      <div class="w-full mt-7 rounded-xl border border-paper-line dark:border-navy-line bg-paper-panel dark:bg-navy-panel/95 shadow-lg shadow-black/10 dark:shadow-black/30 overflow-hidden text-start" dir="ltr">
+        <div class="flex items-center gap-1.5 px-4 py-2.5 border-b border-paper-line dark:border-navy-line">
+          <span class="status-dot"></span>
+          <span class="ms-2 text-[11px] font-mono text-[#5B667E] dark:text-[#7C8AB0]">SAEM Security</span>
+        </div>
+        <div id="cardTerminal" class="p-4 font-mono text-[12.5px] leading-7 text-[#3C4A6B] dark:text-[#B7C4E4]"></div>
+      </div>
+
+      <a id="whatsappBtn" href="#" target="_blank" rel="noopener"
+         class="mt-5 w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-500 text-white font-medium text-sm shadow-glow hover:bg-brand-400 transition-colors">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.017 2C6.505 2 2 6.477 2 11.955c0 2.108.552 4.089 1.606 5.849L2 22l4.34-1.577a10.06 10.06 0 0 0 5.677 1.74h.004c5.512 0 10.017-4.477 10.017-9.955C22.038 6.73 17.53 2.253 12.017 2zm0 18.185h-.003a8.28 8.28 0 0 1-4.223-1.155l-.303-.18-3.145 1.144 1.06-3.06-.198-.313a8.213 8.213 0 0 1-1.264-4.394c0-4.556 3.716-8.267 8.28-8.267 2.212 0 4.29.86 5.853 2.42a8.203 8.203 0 0 1 2.423 5.854c0 4.556-3.716 8.267-8.28 8.267z"/></svg>
+        <span id="whatsappLabel"></span>
+      </a>
+
+      <a id="emailBtn" href="#"
+         class="mt-3 w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-500 text-white font-medium text-sm shadow-glow hover:bg-brand-400 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span id="emailLabel"></span>
+      </a>
+
+      <a id="phoneBtn" href="#"
+         class="mt-3 w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-500 text-white font-medium text-sm shadow-glow hover:bg-brand-400 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.98.79l1.06 4.24a1 1 0 01-.5 1.09l-1.6.8a11.05 11.05 0 006.02 6.02l.8-1.6a1 1 0 011.09-.5l4.24 1.06a1 1 0 01.79.98V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+        <span id="phoneLabel"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-6 text-center">
+    <div id="footerRights" class="text-[11px] text-[#5B667E] dark:text-[#7C8AB0]"></div>
+  </div>
+</main>
+
+<script src="team.js"></script>
+
+<script>
+(function () {
+  const STORAGE_LANG_KEY = 'saem_lang';
+  const STORAGE_THEME_KEY = 'saem_theme';
+
+  const NOT_FOUND = {
+    ar: 'لم يتم العثور على عضو الفريق: ',
+    tr: 'Ekip üyesi bulunamadı: ',
+    en: 'Team member not found: '
+  };
+
+  const STATIC = {
+    field: {
+      ar: { email: 'البريد', location: 'الموقع', phone: 'الهاتف', status: 'الحالة', status_value: 'موثّق ✔', whatsapp: 'تواصل عبر واتساب', email_btn: 'تواصل عبر الإيميل', phone_btn: 'تواصل عبر الهاتف', logoAlt: 'شعار SAEM Security', themeToggle: 'تبديل الوضع الداكن / الفاتح' },
+      tr: { email: 'e-posta', location: 'konum', phone: 'telefon', status: 'durum', status_value: 'doğrulandı ✔', whatsapp: 'WhatsApp ile Ulaşın', email_btn: 'E-posta ile Ulaşın', phone_btn: 'Telefon ile Ulaşın', logoAlt: 'SAEM Security Logosu', themeToggle: 'Karanlık / aydınlık mod arasında geçiş yap' },
+      en: { email: 'email', location: 'location', phone: 'phone', status: 'status', status_value: 'verified ✔', whatsapp: 'Contact on WhatsApp', email_btn: 'Contact by Email', phone_btn: 'Contact by Phone', logoAlt: 'SAEM Security Logo', themeToggle: 'Toggle dark / light mode' }
+    },
+    footer: {
+      ar: '© 2026 SAEM Security. جميع الحقوق محفوظة.',
+      tr: '© 2026 SAEM Security. Tüm hakları saklıdır.',
+      en: '© 2026 SAEM Security. All rights reserved.'
+    },
+    dirMap: { ar: 'rtl', tr: 'ltr', en: 'ltr' },
+    langMap: { ar: 'ar', tr: 'tr', en: 'en' }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const filenameId = window.location.pathname.split('/').pop().replace(/\.html?$/i, '');
+  const memberId = params.get('id') || filenameId;
+  const member = TEAM[memberId];
+
+  if (!member) {
+    const storedLang = localStorage.getItem(STORAGE_LANG_KEY);
+    const browserLang = (navigator.language || '').slice(0, 2);
+    const notFoundLang = NOT_FOUND[storedLang] ? storedLang : (NOT_FOUND[browserLang] ? browserLang : 'en');
+    document.body.innerHTML =
+      '<div style="padding:2rem;text-align:center;font-family:sans-serif">' +
+      NOT_FOUND[notFoundLang] + '<b>' + (memberId || '') + '</b>' +
+      '</div>';
+    return;
+  }
+
+  document.title = member.name + ' — SAEM Security';
+
+  const root = document.documentElement;
+  const body = document.body;
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const themeToggleBtn = document.getElementById('themeToggle');
+  const avatarImg = document.getElementById('avatarImg');
+  const nameLabelEl = document.getElementById('nameLabel');
+  const roleLabelEl = document.getElementById('roleLabel');
+  const footerRightsEl = document.getElementById('footerRights');
+  const cardTerminalEl = document.getElementById('cardTerminal');
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  const whatsappLabel = document.getElementById('whatsappLabel');
+  const emailBtn = document.getElementById('emailBtn');
+  const emailLabel = document.getElementById('emailLabel');
+  const phoneBtn = document.getElementById('phoneBtn');
+  const phoneLabel = document.getElementById('phoneLabel');
+
+  avatarImg.src = member.avatar;
+  avatarImg.alt = member.name;
+  nameLabelEl.textContent = member.name;
+
+  function applyLanguage(lang) {
+    const field = STATIC.field[lang];
+    if (!field) return;
+
+    localStorage.setItem(STORAGE_LANG_KEY, lang);
+    root.setAttribute('lang', STATIC.langMap[lang]);
+    root.setAttribute('dir', STATIC.dirMap[lang]);
+    body.classList.toggle('font-bodyAr', lang === 'ar');
+    document.querySelectorAll('.font-display').forEach((el) => {
+      el.classList.toggle('font-displayAr', lang === 'ar');
+    });
+
+    roleLabelEl.textContent = member.role[lang];
+    footerRightsEl.textContent = STATIC.footer[lang];
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => el.setAttribute('alt', field.logoAlt));
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', field.themeToggle));
+    whatsappLabel.textContent = field.whatsapp;
+    whatsappBtn.href = member.whatsapp;
+
+    emailLabel.textContent = field.email_btn;
+    emailBtn.href = `mailto:${member.email}`;
+
+    phoneLabel.textContent = field.phone_btn;
+    phoneBtn.href = `tel:+${member.phone}`;
+
+    cardTerminalEl.innerHTML =
+      `<div>&gt; <bdi>${field.email}</bdi> <a class="terminal-link" dir="ltr" href="mailto:${member.email}">${member.email}</a></div>` +
+      `<div>&gt; <bdi>${field.phone}</bdi> <a class="terminal-link" dir="ltr" href="tel:+${member.phone}">${member.phoneDisplay}</a></div>` +
+      `<div>&gt; <bdi>${field.location}</bdi> <bdi class="text-[#0B1220] dark:text-[#E7EDFB]">${member.location[lang]}</bdi></div>` +
+      `<div>&gt; <bdi>${field.status}</bdi> <span class="text-[#34D399]">${field.status_value}</span><span class="terminal-caret"></span></div>`;
+
+    langButtons.forEach((btn) => {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('bg-brand-500', isActive);
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('text-[#5B667E]', !isActive);
+      btn.classList.toggle('dark:text-[#7C8AB0]', !isActive);
+    });
+  }
+
+  function applyTheme(theme) {
+    root.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem(STORAGE_THEME_KEY, theme);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(localStorage.getItem(STORAGE_THEME_KEY) || 'dark');
+    applyLanguage(localStorage.getItem(STORAGE_LANG_KEY) || 'ar');
+
+    langButtons.forEach((btn) => {
+      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+    });
+
+    themeToggleBtn.addEventListener('click', () => {
+      applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    });
+  });
+})();
+</script>
+</body>
+</html>

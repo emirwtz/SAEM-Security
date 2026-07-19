@@ -1,0 +1,150 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background-color .35s ease, color .35s ease;
+}
+
+.radar {
+  position: relative;
+}
+
+.radar::before,
+.radar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(108, 92, 231, 0.25);
+}
+
+.radar::after {
+  inset: 18%;
+  border-color: rgba(199, 125, 255, 0.25);
+}
+
+.sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+  animation: spin 5s linear infinite;
+}
+
+.sweep-blade {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg, rgba(199, 125, 255, 0.55), rgba(199, 125, 255, 0) 28%);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.blip {
+  animation: blip 2.4s ease-in-out infinite;
+}
+
+@keyframes blip {
+  0%, 100% { opacity: .3; transform: scale(.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.terminal-caret::after {
+  content: '▍';
+  color: #C77DFF;
+  animation: caret 1s step-start infinite;
+}
+
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep,
+  .blip,
+  .terminal-caret::after {
+    animation: none !important;
+  }
+}
+
+::selection {
+  background: #6C5CE7;
+  color: white;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #C77DFF;
+  outline-offset: 2px;
+}
+
+#geoLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: #0A0A14;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+
+#geoLoader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.geo-bar {
+  width: 220px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(108, 92, 231, 0.18);
+  overflow: hidden;
+}
+
+.geo-bar-fill {
+  height: 100%;
+  width: 30%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6C5CE7, #C77DFF);
+  animation: geo-slide 1.1s ease-in-out infinite;
+}
+
+@keyframes geo-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(430%); }
+}
+
+#mobileNav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+
+#mobileNav.open {
+  max-height: 420px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .geo-bar-fill {
+    animation: none !important;
+  }
+}
