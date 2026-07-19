@@ -28,6 +28,14 @@ const firebaseConfig = {
       lang: document.documentElement.getAttribute("lang") || null,
       userAgent: navigator.userAgent,
       screen: `${window.screen.width}x${window.screen.height}`,
-    }).catch(() => {});
-  } catch (e) {}
+    })
+      .then(() => console.log("[firebase-log] yazma başarılı"))
+      .catch((err) => {
+        // DEBUG: sorun çözülünce bu satırı yorum satırı yapıp
+        // yerine sessiz bir catch koyabilirsiniz.
+        console.error("[firebase-log] Firestore yazma hatası:", err.code || err);
+      });
+  } catch (e) {
+    console.error("[firebase-log] initializeApp/getFirestore hatası:", e);
+  }
 })();
