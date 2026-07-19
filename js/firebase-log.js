@@ -7,12 +7,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCiGsxjUc2Co2t4BUR96bWPGZWA28U-FvA",
-  authDomain: "saem-security.firebaseapp.com",
-  projectId: "saem-security",
-  storageBucket: "saem-security.firebasestorage.app",
-  messagingSenderId: "1030960413908",
-  appId: "1:1030960413908:web:a63a5b6cd73752720bcf41"
+  apiKey: "AIzaSyAgR0vPelPAfcXSkEHfT3bmypHpd8dLcKY",
+  authDomain: "saem-security-5d2b5.firebaseapp.com",
+  projectId: "saem-security-5d2b5",
+  storageBucket: "saem-security-5d2b5.firebasestorage.app",
+  messagingSenderId: "513970972570",
+  appId: "1:513970972570:web:a1f400127b7e9318dc7c23"
 };
 
 (function logVisit() {
