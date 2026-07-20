@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAEM Security - Admin Panel</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #121212; color: #e0e0e0; padding: 40px; margin: 0; }
+        .container { max-width: 600px; margin: 0 auto; background: #1e1e1e; padding: 30px; border-radius: 12px; border: 1px solid #333; }
+        h1, h2 { color: #00adb5; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #aaa; }
+        input { width: 100%; padding: 10px; background: #252525; border: 1px solid #444; border-radius: 6px; color: #fff; box-sizing: border-box; }
+        button { background: #00adb5; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+        button:hover { background: #008c95; }
+        .status { padding: 10px; border-radius: 6px; margin-top: 20px; font-weight: bold; display: none; }
+        .loading { background-color: #332200; color: #ffb703; display: block; }
+        .success { background-color: #1b4332; color: #52b788; display: block; }
+        .error { background-color: #660708; color: #e63946; display: block; }
+        #dashboardArea { display: none; margin-top: 30px; }
+        .stat-box { background: #252525; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #00adb5; }
+        .stat-number { font-size: 2rem; font-weight: bold; color: #fff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #444; }
+        th { color: #00adb5; background-color: #1a1a1a; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="loginArea">
+    <h1>SAEM Security Admin Gateway</h1>
+    <div class="input-group">
+        <label>Administrator Email</label>
+        <input type="email" id="emailInput" placeholder="admin@domain.com">
+    </div>
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="passwordInput" placeholder="••••••••">
+    </div>
+    <button id="loginBtn">Authenticate</button>
+    <div id="statusBox" class="status"></div>
+</div>
+
+<div class="container" id="dashboardArea">
+    <h2>Analytics Dashboard</h2>
+    <div class="stat-box">
+        <div>Total Visits (Current Month)</div>
+        <div id="totalRequests" class="stat-number">-</div>
+    </div>
+    <table>
+        <thead>
+            <tr><th>Country</th><th>Visits</th></tr>
+        </thead>
+        <tbody id="countryTableBody"></tbody>
+    </table>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, collection, getDocs, query, where, Timestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAgR0vPelPAfcXSkEHfT3bmypHpd8dLcKY",
+      authDomain: "saem-security-5d2b5.firebaseapp.com",
+      projectId: "saem-security-5d2b5",
+      storageBucket: "saem-security-5d2b5.firebasestorage.app",
+      messagingSenderId: "513970972570",
+      appId: "1:513970972570:web:a1f400127b7e9318dc7c23"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const statusBox = document.getElementById("statusBox");
+    const loginBtn = document.getElementById("loginBtn");
+
+    loginBtn.addEventListener("click", async () => {
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("passwordInput").value;
+
+        if(!email || !password) {
+            statusBox.className = "status error";
+            statusBox.innerText = "Please fill in all fields.";
+            return;
+        }
+
+        statusBox.className = "status loading";
+        statusBox.innerText = "Verifying credentials...";
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            
+            statusBox.className = "status success";
+            statusBox.innerText = "Access granted. Loading dashboard...";
+
+            const now = new Date();
+            const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+            const startTimestamp = Timestamp.fromDate(firstDayOfMonth);
+
+            const logsRef = collection(db, "visits");
+            const q = query(logsRef, where("timestamp", ">=", startTimestamp));
+            const querySnapshot = await getDocs(q);
+            
+            let totalVisits = 0;
+            const countryCounts = {};
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                totalVisits++;
+                const country = data.country || "Unknown";
+                countryCounts[country] = (countryCounts[country] || 0) + 1;
+            });
+
+            document.getElementById("totalRequests").innerText = totalVisits;
+            const tableBody = document.getElementById("countryTableBody");
+            tableBody.innerHTML = "";
+            
+            const sortedCountries = Object.entries(countryCounts).sort((a, b) => b[1] - a[1]);
+            sortedCountries.forEach(([country, count]) => {
+                tableBody.innerHTML += `<tr><td><strong>${country}</strong></td><td>${count}</td></tr>`;
+            });
+
+            document.getElementById("loginArea").style.display = "none";
+            document.getElementById("dashboardArea").style.display = "block";
+
+        } catch (error) {
+            statusBox.className = "status error";
+            statusBox.innerText = "Authentication failed: Invalid credentials or unauthorized access.";
+        }
+    });
+</script>
+</body>
+</html>
