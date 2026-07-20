@@ -172,12 +172,12 @@
     </a>
 
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
-      <a href="https://saemsecurity.com/#hero" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Home</a>
-      <a href="https://saemsecurity.com/#about" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">About</a>
-      <a href="https://saemsecurity.com/#services" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Services</a>
-      <a href="https://saemsecurity.com/#locations" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Locations</a>
-      <a href="https://saemsecurity.com/#contact" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Contact</a>
-      <a href="https://saemsecurity.com/privacy.html" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Privacy</a>
+      <a href="https://saemsecurity.com/#hero" data-nav="home" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Home</a>
+      <a href="https://saemsecurity.com/#about" data-nav="about" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">About</a>
+      <a href="https://saemsecurity.com/#services" data-nav="services" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Services</a>
+      <a href="https://saemsecurity.com/#locations" data-nav="locations" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Locations</a>
+      <a href="https://saemsecurity.com/#contact" data-nav="contact" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Contact</a>
+      <a href="https://saemsecurity.com/privacy.html" data-nav="privacy" class="hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Privacy</a>
     </nav>
 
     <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -203,12 +203,12 @@
 
   <nav id="mobileNav" class="md:hidden border-t border-paper-line dark:border-navy-line bg-paper/95 dark:bg-navy/95 backdrop-blur-md">
     <div class="px-5 sm:px-8 py-2 flex flex-col text-sm font-medium">
-      <a href="https://saemsecurity.com/#hero" data-mobile-link class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Home</a>
-      <a href="https://saemsecurity.com/#about" data-mobile-link class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">About</a>
-      <a href="https://saemsecurity.com/#services" data-mobile-link class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Services</a>
-      <a href="https://saemsecurity.com/#locations" data-mobile-link class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Locations</a>
-      <a href="https://saemsecurity.com/#contact" data-mobile-link class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Contact</a>
-      <a href="https://saemsecurity.com/privacy.html" class="py-3 hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Privacy</a>
+      <a href="https://saemsecurity.com/#hero" data-mobile-link data-nav="home" class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Home</a>
+      <a href="https://saemsecurity.com/#about" data-mobile-link data-nav="about" class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">About</a>
+      <a href="https://saemsecurity.com/#services" data-mobile-link data-nav="services" class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Services</a>
+      <a href="https://saemsecurity.com/#locations" data-mobile-link data-nav="locations" class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Locations</a>
+      <a href="https://saemsecurity.com/#contact" data-mobile-link data-nav="contact" class="py-3 border-b border-paper-line dark:border-navy-line hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Contact</a>
+      <a href="https://saemsecurity.com/privacy.html" data-nav="privacy" class="py-3 hover:text-brand-500 dark:hover:text-accent-400 transition-colors">Privacy</a>
     </div>
   </nav>
 </header>
@@ -291,7 +291,12 @@
       en: '© 2026 SAEM Security. All rights reserved.'
     },
     dirMap: { ar: 'rtl', tr: 'ltr', en: 'ltr' },
-    langMap: { ar: 'ar', tr: 'tr', en: 'en' }
+    langMap: { ar: 'ar', tr: 'tr', en: 'en' },
+    nav: {
+      ar: { home: 'الرئيسية', about: 'من نحن', services: 'الخدمات', locations: 'المواقع', contact: 'اتصل بنا', privacy: 'الخصوصية' },
+      tr: { home: 'Anasayfa', about: 'Hakkımızda', services: 'Hizmetler', locations: 'Konumlar', contact: 'İletişim', privacy: 'Gizlilik' },
+      en: { home: 'Home', about: 'About', services: 'Services', locations: 'Locations', contact: 'Contact', privacy: 'Privacy' }
+    }
   };
 
   const params = new URLSearchParams(window.location.search);
@@ -351,6 +356,10 @@
 
     roleLabelEl.textContent = member.role[lang];
     footerRightsEl.textContent = STATIC.footer[lang];
+    const navLabels = STATIC.nav[lang];
+    document.querySelectorAll('[data-nav]').forEach((el) => {
+      el.textContent = navLabels[el.getAttribute('data-nav')];
+    });
     document.querySelectorAll('[data-i18n-alt]').forEach((el) => el.setAttribute('alt', field.logoAlt));
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => el.setAttribute('aria-label', field.themeToggle));
     whatsappLabel.textContent = field.whatsapp;
