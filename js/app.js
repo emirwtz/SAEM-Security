@@ -58,11 +58,6 @@
 
   function initLangRouting() {
     const pageLang = root.getAttribute('lang');
-
-    // Only the real entry point ("/") should ever auto-redirect by
-    // geolocation. Any other English page (e.g. /privacy.html) must render
-    // itself, never bounce the visitor to a different page just because
-    // their country maps to tr/ar.
     const isEntryPoint = window.location.pathname === '/';
 
     if (pageLang !== 'en' || !isEntryPoint) {
