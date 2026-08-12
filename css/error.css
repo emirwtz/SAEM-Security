@@ -1,0 +1,40 @@
+.error-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 4rem;
+}
+.error-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.03em;
+}
+.error-title {
+  margin: 1rem 0 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.error-text {
+  margin-top: 1rem;
+  color: var(--text-soft);
+  max-width: 34rem;
+}
+.error-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.error-terminal {
+  margin-top: 3rem;
+  max-width: 32rem;
+}

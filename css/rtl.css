@@ -1,0 +1,15 @@
+html[dir="rtl"] .desktop-nav { flex-direction: row-reverse; }
+html[dir="rtl"] .header-container { flex-direction: row-reverse; }
+html[dir="rtl"] .header-actions { flex-direction: row-reverse; }
+html[dir="rtl"] .footer-card { flex-direction: row-reverse; }
+html[dir="rtl"] .footer-card-arrow { transform: scaleX(-1); }
+html[dir="rtl"] .footer-card:hover .footer-card-arrow { transform: scaleX(-1) translateX(-3px); }
+html[dir="rtl"] .contact-detail { flex-direction: row-reverse; justify-content: flex-end; }
+html[dir="rtl"] .hero-actions { flex-direction: row-reverse; }
+html[dir="rtl"] .form-actions { flex-direction: row-reverse; }
+html[dir="rtl"] .error-actions { flex-direction: row-reverse; }
+html[dir="rtl"] .footer-bottom-inner { flex-direction: row-reverse; }
+html[dir="rtl"] .about-point-title,
+html[dir="rtl"] .service-title,
+html[dir="rtl"] .location-title { text-align: right; }
+html[dir="rtl"] .lang-switcher { flex-direction: row-reverse; }
