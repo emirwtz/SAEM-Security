@@ -27,7 +27,7 @@
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.gstatic.com; connect-src 'self' https://formspree.io https://www.google.com; frame-src https://www.google.com; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com 'unsafe-hashes' 'sha256-0z3ki6p29XMVeHb+/IRMTwkA+eF6Medgg4EXm8iR+l0=' 'sha256-17o3H+bKH2j3kxElYUDHnurMn1e1GgUCvsfRQLT1PKQ=' 'sha256-nVbYSgvR8ZflugKc6csSUGl5qz5Mmxh0Tu/GFwxH9Bw='; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.gstatic.com; connect-src 'self' https://formspree.io https://www.google.com https://cloudflareinsights.com; frame-src https://www.google.com; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -107,9 +107,9 @@
         <div class="hero-visual reveal reveal-delay">
           <div class="radar">
             <div class="sweep"><div class="sweep-blade"></div></div>
-            <span class="blip" style="top:30%; left:60%; background:#C77DFF;"></span>
-            <span class="blip" style="top:65%; left:35%; background:#6C5CE7; animation-delay:.8s;"></span>
-            <span class="blip" style="top:45%; left:20%; background:#C77DFF; animation-delay:1.6s;"></span>
+            <span class="blip blip-a"></span>
+            <span class="blip blip-b"></span>
+            <span class="blip blip-c"></span>
           </div>
 
           <div class="terminal-card">
@@ -229,19 +229,19 @@
         <form id="contactForm" action="https://formspree.io/f/xbdngvno" method="POST" class="contact-form reveal reveal-delay">
           <div class="form-field">
             <label for="name">الاسم الكامل</label>
-            <input id="name" name="name" required type="text">
+            <input id="name" name="name" required type="text" maxlength="100" autocomplete="name">
           </div>
           <div class="form-field">
             <label for="email">البريد الإلكتروني</label>
-            <input id="email" name="email" required type="email">
+            <input id="email" name="email" required type="email" maxlength="254" autocomplete="email">
           </div>
           <div class="form-field form-field-full">
             <label for="subject">الموضوع</label>
-            <input id="subject" name="subject" type="text">
+            <input id="subject" name="subject" type="text" maxlength="200" autocomplete="off">
           </div>
           <div class="form-field form-field-full">
             <label for="message">الرسالة</label>
-            <textarea id="message" name="message" required rows="4"></textarea>
+            <textarea id="message" name="message" required rows="4" maxlength="5000"></textarea>
           </div>
           <div class="form-field form-field-full">
             <div class="g-recaptcha" data-sitekey="6LcdmYItAAAAACGK2yjG-fFoX6N9wk_wuMahZ0AZ"></div>
@@ -293,6 +293,6 @@
     </div>
   </footer>
 
-  <script src="/js/script.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

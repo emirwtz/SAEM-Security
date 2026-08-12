@@ -100,6 +100,9 @@ body {
 .header-actions button svg { width: 1rem; height: 1rem; }
 
 #iconClose { display: none; }
+#menuToggle.menu-open #iconBurger { display: none; }
+#menuToggle.menu-open #iconClose { display: block; }
+body.nav-open { overflow: hidden; }
 
 .mobile-nav { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background-color: var(--bg); border-top: 1px solid var(--line); }
 .mobile-nav.open { max-height: 420px !important; }
@@ -187,6 +190,9 @@ body {
 .sweep-blade { position: absolute; inset: 0; background: conic-gradient(from 0deg, rgba(199, 125, 255, 0.55), rgba(199, 125, 255, 0) 28%); }
 @keyframes spin { to { transform: rotate(360deg); } }
 .blip { position: absolute; width: 0.4rem; height: 0.4rem; border-radius: 999px; animation: blip 2.4s ease-in-out infinite; }
+.blip-a { top: 30%; left: 60%; background: #C77DFF; }
+.blip-b { top: 65%; left: 35%; background: #6C5CE7; animation-delay: .8s; }
+.blip-c { top: 45%; left: 20%; background: #C77DFF; animation-delay: 1.6s; }
 @keyframes blip { 0%, 100% { opacity: .3; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.15); } }
 
 .terminal-card {
@@ -280,7 +286,7 @@ html.light { --terminal-bg: rgba(11, 18, 32, 0.96); }
 }
 .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
 .form-actions { display: flex; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap; }
-html:not([dir="rtl"]) .form-actions { justify-content: flex-start; }
+html[dir="rtl"] .form-actions { flex-direction: row-reverse; justify-content: flex-end; }
 .form-success { font-size: 0.85rem; color: var(--accent); }
 .form-error { font-size: 0.85rem; color: #f87171; }
 
