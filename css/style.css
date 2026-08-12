@@ -280,7 +280,7 @@ html.light { --terminal-bg: rgba(11, 18, 32, 0.96); }
 }
 .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
 .form-actions { display: flex; flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap; }
-html:not([dir="rtl"]) .form-actions { justify-content: flex-end; }
+html:not([dir="rtl"]) .form-actions { justify-content: flex-start; }
 .form-success { font-size: 0.85rem; color: var(--accent); }
 .form-error { font-size: 0.85rem; color: #f87171; }
 
