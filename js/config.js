@@ -2,7 +2,8 @@ export const PAGE_LANGS = {
   home: { en: '/', tr: '/tr/', ar: '/ar/' },
   privacy: { en: '/privacy.html', tr: '/tr/privacy.html', ar: '/ar/privacy.html' },
   cardvisitEmir: { en: '/cardvisit/emir.html', tr: '/tr/cardvisit/emir.html', ar: '/ar/cardvisit/emir.html' },
-  cardvisitShadi: { en: '/cardvisit/shadi.html', tr: '/tr/cardvisit/shadi.html', ar: '/ar/cardvisit/shadi.html' }
+  cardvisitShadi: { en: '/cardvisit/shadi.html', tr: '/tr/cardvisit/shadi.html', ar: '/ar/cardvisit/shadi.html' },
+  cardvisitMohammad: { en: '/cardvisit/mohammad.html', tr: '/tr/cardvisit/mohammad.html', ar: '/ar/cardvisit/mohammad.html' }
 };
 
 export const FORM_MESSAGES = {

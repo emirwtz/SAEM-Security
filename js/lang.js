@@ -14,8 +14,9 @@ function normalizePath(pathname) {
 
 function detectPageKey(pathname) {
   const path = normalizePath(pathname);
-  if (/\/cardvisit\/emir\.html$/.test(path)) return 'cardvisitEmir';
-  if (/\/cardvisit\/shadi\.html$/.test(path)) return 'cardvisitShadi';
+  if (/\/cardvisit\/emir\.html$/i.test(path)) return 'cardvisitEmir';
+  if (/\/cardvisit\/shadi\.html$/i.test(path)) return 'cardvisitShadi';
+  if (/\/cardvisit\/mohammad\.html$/i.test(path)) return 'cardvisitMohammad';
   if (/\/privacy\.html$/.test(path)) return 'privacy';
   return 'home';
 }
@@ -30,7 +31,9 @@ export function initLangSwitcher() {
 
   switcher.querySelectorAll('[data-lang]').forEach((link) => {
     const lang = link.dataset.lang;
-    link.href = routes[lang];
+    const route = routes[lang];
+    if (!route) return;
+    link.href = route;
     link.classList.toggle('active', lang === currentLang);
     if (lang === currentLang) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');

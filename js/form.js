@@ -1,6 +1,8 @@
 import { FIELD_LIMITS, FORM_MESSAGES, FORMSPREE_ORIGIN, RECAPTCHA_SCRIPT } from './config.js';
 import { getCurrentLang } from './i18n.js';
 
+const SUBMIT_TIMEOUT_MS = 15000;
+
 function isAllowedFormAction(action) {
   try {
     const url = new URL(action, window.location.origin);
@@ -91,10 +93,14 @@ export function initContactForm() {
 
     if (submitBtn) submitBtn.disabled = true;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS);
+
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
-      headers: { Accept: 'application/json' }
+      headers: { Accept: 'application/json' },
+      signal: controller.signal
     })
       .then((response) => {
         if (response.ok) {
@@ -111,6 +117,7 @@ export function initContactForm() {
         errorEl?.classList.remove('hidden');
       })
       .finally(() => {
+        clearTimeout(timeoutId);
         if (submitBtn) submitBtn.disabled = false;
       });
   });

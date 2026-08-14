@@ -50,7 +50,7 @@
         <span class="logo-text">SAEM <span>Security</span></span>
       </a>
 
-      <nav class="desktop-nav">
+      <nav class="desktop-nav" aria-label="القائمة الرئيسية">
         <a href="#hero">الرئيسية</a>
         <a href="#about">من نحن</a>
         <a href="#services">خدماتنا</a>
@@ -67,17 +67,17 @@
         </nav>
 
         <button id="themeToggle" aria-label="تغيير المظهر">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         </button>
 
         <button id="menuToggle" aria-label="القائمة" aria-expanded="false">
-          <svg id="iconBurger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-          <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+          <svg id="iconBurger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="iconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
     </div>
 
-    <nav id="mobileNav" class="mobile-nav">
+    <nav id="mobileNav" class="mobile-nav" aria-label="قائمة الجوال">
       <div class="mobile-nav-inner">
         <a href="#hero" data-mobile-link>الرئيسية</a>
         <a href="#about" data-mobile-link>من نحن</a>
@@ -105,7 +105,7 @@
         </div>
 
         <div class="hero-visual reveal reveal-delay">
-          <div class="radar">
+          <div class="radar" aria-hidden="true">
             <div class="sweep"><div class="sweep-blade"></div></div>
             <span class="blip blip-a"></span>
             <span class="blip blip-b"></span>
@@ -169,16 +169,16 @@
         <div class="services-grid reveal">
           <div class="service-card service-card-flagship">
             <span class="service-tag">الخدمة الرائدة</span>
-            <h4 class="service-title">التقارير الأمنية الشهرية</h4>
+            <h3 class="service-title">التقارير الأمنية الشهرية</h3>
             <p class="service-text">تتلقى شركتك كل شهر تقريراً مفصلاً يتضمن الثغرات المكتشفة، التهديدات المحبطة، وأداء النظام إلى جانب توصيات عملية وقابلة للتنفيذ.</p>
             <div class="service-stat"><span class="service-stat-num">30</span><span class="service-stat-label"> يوماً دورة التقارير</span></div>
           </div>
           <div class="service-card">
-            <h4 class="service-title">اختبار الاختراق (Pentest)</h4>
+            <h3 class="service-title">اختبار الاختراق (Pentest)</h3>
             <p class="service-text">نختبر أنظمتك ضد سيناريوهات الهجوم الحقيقية ونكتشف الثغرات قبل أن يلاحظها المهاجمون.</p>
           </div>
           <div class="service-card">
-            <h4 class="service-title">تدريب الموظفين</h4>
+            <h3 class="service-title">تدريب الموظفين</h3>
             <p class="service-text">نمكن فرق عملك من التعرف على محاولات التصيد الاحتيالي (Phishing) والهندسة الاجتماعية.</p>
           </div>
         </div>
@@ -196,7 +196,7 @@
         <div class="locations-grid reveal">
           <div class="location-card">
             <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <h3 class="location-title">تركيا</h3>
             <p class="location-text">من خلال فريق اختبار الاختراق المتمركز في إسطنبول، نؤمن البنية التحتية الرقمية للشركات عبر تقديم اختبارات اختراق بمعايير دولية، وحلول التقارير الشهرية، وتدريبات الأمن السيبراني للموظفين.</p>
@@ -204,7 +204,7 @@
           </div>
           <div class="location-card">
             <div class="location-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <h3 class="location-title">سوريا</h3>
             <p class="location-text">من خلال فريقنا في دمشق، نقدم حلول أمان بمعايير عالمية للشركات في المنطقة عبر اختبار الاختراق، التقارير الدورية للحالة، والتدريبات الشاملة للموظفين المدعومة بخبرات التحليل التقني.</p>
@@ -226,7 +226,7 @@
           </div>
         </div>
 
-        <form id="contactForm" action="https://formspree.io/f/xbdngvno" method="POST" class="contact-form reveal reveal-delay">
+        <form id="contactForm" action="https://formspree.io/f/xbdngvno" method="POST" class="contact-form reveal reveal-delay" novalidate>
           <div class="form-field">
             <label for="name">الاسم الكامل</label>
             <input id="name" name="name" required type="text" maxlength="100" autocomplete="name">
@@ -249,8 +249,8 @@
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-field form-field-full form-actions">
             <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
-            <span class="form-success hidden">تم الإرسال &mdash; شكراً لتواصلك معنا.</span>
-            <span class="form-error hidden">حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.</span>
+            <span class="form-success hidden" role="status">تم الإرسال &mdash; شكراً لتواصلك معنا.</span>
+            <span class="form-error hidden" role="alert">حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.</span>
           </div>
         </form>
       </div>
@@ -272,7 +272,7 @@
             <p class="footer-card-name">شادي قرقوطلي</p>
             <p class="footer-card-role">المؤسس</p>
           </div>
-          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </a>
         <a href="/ar/cardvisit/emir.html" class="footer-card">
           <img src="/img/emir.jpg" alt="محمد أمير إيروغلو" loading="lazy" width="48" height="48" class="footer-card-img">
@@ -280,7 +280,7 @@
             <p class="footer-card-name">محمد أمير إيروغلو</p>
             <p class="footer-card-role">المؤسس</p>
           </div>
-          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </a>
         <a href="/ar/cardvisit/mohammad.html" class="footer-card">
           <img src="/img/mohammad.jpeg" alt="محمد شرف" loading="lazy" width="48" height="48" class="footer-card-img">
@@ -288,7 +288,7 @@
             <p class="footer-card-name">محمد شرف</p>
             <p class="footer-card-role">المؤسس</p>
           </div>
-          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg class="footer-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>

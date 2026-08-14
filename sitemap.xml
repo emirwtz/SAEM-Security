@@ -74,6 +74,15 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://www.saemsecurity.com/cardvisit/mohammad.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.saemsecurity.com/ar/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://www.saemsecurity.com/tr/cardvisit/emir.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.saemsecurity.com/cardvisit/emir.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/emir.html"/>
@@ -92,6 +101,15 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://www.saemsecurity.com/tr/cardvisit/mohammad.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.saemsecurity.com/ar/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://www.saemsecurity.com/ar/cardvisit/emir.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.saemsecurity.com/cardvisit/emir.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/emir.html"/>
@@ -106,6 +124,15 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/shadi.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.saemsecurity.com/ar/cardvisit/shadi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saemsecurity.com/cardvisit/shadi.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.saemsecurity.com/ar/cardvisit/mohammad.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.saemsecurity.com/tr/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.saemsecurity.com/ar/cardvisit/mohammad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.saemsecurity.com/cardvisit/mohammad.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
